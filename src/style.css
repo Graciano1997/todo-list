@@ -1,0 +1,107 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap');
+*{
+  font-family: 'Open Sans', sans-serif;
+  font-size: 15px;
+}
+
+.container {
+  margin: 0;
+  padding-left: 10%;
+  padding-right: 10%;
+  display: flex;
+  flex-direction:column;
+  background: whitesmoke;
+}
+
+.to-do-container{
+  background: #fff;
+  padding: 0;
+  margin: 0;
+}
+
+.header{
+  margin-top: 15%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #fff;
+  border-bottom: 1px solid rgba(168, 154, 154, 0.883);
+  padding-left: 1%;
+  padding-right: 1%;
+}
+
+.form-todo {
+  padding-top: 1.5%;
+  display: flex;
+  justify-content: space-between;
+  border-top: 1px solid rgba(168, 154, 154, 0.883);
+  padding-bottom: 1%;
+  padding-left: 1%;
+  padding-right: 1%;
+}
+
+#inputTask {
+    width: 95%;
+    outline: none;
+    border: transparent;
+}
+
+.divTaskContent {
+  width: 100%;
+}
+
+.taskCheck, .taskContent{
+  padding-top: 1.5%;
+  outline-style: none;
+  border-color: transparent;
+}
+
+.taskContent {
+  width: 100%;
+  line-height: 20px;
+  word-wrap: break-word;
+  overflow: hidden;
+  resize: none;
+}
+
+.list-container{
+  display: flex;
+  flex-direction: column;
+  border-bottom: 1px solid rgba(168, 154, 154, 0.883);
+  padding-bottom: 1%;
+  padding-left: 1%;
+  padding-right: 1%;
+}
+
+.task {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-top: 1px solid rgba(168, 154, 154, 0.883);
+}
+.taskfield{
+  width: 100%;
+}
+
+.fields {
+display: flex;
+width:97%;
+gap: 1%;
+}
+
+.clear {
+width: 100%;
+background: red;
+}
+
+.clear button {
+    padding: 1%;
+    width: 100%;
+    border: transparent;
+}
+
+.clear button:hover {
+    text-decoration: underline;
+    cursor: pointer;
+}
+

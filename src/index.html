@@ -1,12 +1,68 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Todo list website</title>
 </head>
-<body>
-    <h1>Ola</h1>
-    <h2>tudo trabalhando</h2>
+
+<body class="container">
+    <header class="header">
+        <h1>Today's To Do</h1> <span>icon</span>
+    </header>
+    <main>
+        <div class="to-do-container">
+            <form action="" class="form-todo">
+                <input type="text" id="inputTask" placeholder="Add to your list..." autocomplete="off">
+                <span>icon</span>
+            </form>
+            <div class="list-container">
+                <div class="task">
+                    <div class="fields">
+                        <div class="taskCheck">
+                            <input type="checkbox" name="check" id="">
+                        </div>
+                        <div class="divTaskContent">
+                            <textarea class="taskContent" maxlength="500" spellcheck="false"
+                                autocomplete="off">editame</textarea>
+                        </div>
+                    </div>
+                    <span>Icon</span>
+                </div>
+                <div class="task">
+                    <div class="fields">
+                        <div class="taskCheck">
+                            <input type="checkbox" name="check" id="">
+                        </div>
+                        <div class="divTaskContent">
+                            <textarea class="taskContent" maxlength="500" spellcheck="false"
+                                autocomplete="off">editame</textarea>
+                        </div>
+                    </div>
+                    <span>Icon</span>
+                </div>
+                <div class="task">
+                    <div class="fields">
+                        <div class="taskCheck">
+                            <input type="checkbox" name="check" id="">
+                        </div>
+                        <div class="divTaskContent">
+                            <textarea class="taskContent" maxlength="500" spellcheck="false"
+                                autocomplete="off">editame</textarea>
+                        </div>
+                    </div>
+                    <span>Icon</span>
+                </div>
+            </div>
+            <div class="clear">
+                <button type="button" id="clear">Clear all completed</button>
+            </div>
+        </div>
+    </main>
+    <footer>
+
+    </footer>
 </body>
+
 </html>
