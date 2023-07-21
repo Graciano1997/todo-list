@@ -4,7 +4,8 @@ const createTaskTemplate = (task) => {
     divTask.classList.add('task');
   
     const textArea = document.createElement('textarea');
-    textArea.classList.add('taskContent');
+    textArea.id='taskContent';
+    textArea.readOnly=true;
     textArea.maxLength = 250;
     textArea.spellcheck = false;
     textArea.autocomplete = false;

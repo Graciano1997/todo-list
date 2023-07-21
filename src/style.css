@@ -45,6 +45,11 @@
 #enter {
   border: transparent;
   background: #fff;
+  outline: none;
+}
+
+#check {
+  outline: none;
 }
 
 .task-item {
@@ -62,13 +67,13 @@
 }
 
 .taskCheck,
-.taskContent {
+#taskContent {
   padding-top: 1.5%;
   outline-style: none;
   border-color: transparent;
 }
 
-.taskContent {
+#taskContent {
   width: 100%;
   line-height: 20px;
   word-wrap: break-word;
@@ -121,4 +126,8 @@
 
 i {
   color: #919499bc;
+}
+
+.textEditing {
+  background: rgba(249, 230, 123, 0.733);
 }

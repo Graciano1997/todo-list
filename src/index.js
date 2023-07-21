@@ -1,7 +1,8 @@
 import './style.css';
-import { createTaskListener, readTaskListener} from './module/crud.js';
+import { createTaskListener, readTaskListener, updateListener } from './module/crud.js';
 import { setSubmitIcon } from './module/setIcon.js';
 
 createTaskListener();
 readTaskListener();
-setSubmitIcon()
+updateListener();
+setSubmitIcon();
