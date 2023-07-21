@@ -1,26 +1,27 @@
 import './style.css';
+import enterImg from './enter.png';
 
 const taskArray = [
   {
-    description: "Take care of my baby Hosanna ",
+    description: 'Take care of my baby Hosanna ',
     completed: false,
     index: 0,
   },
   {
-    description: "Meet my Coding Partner",
+    description: 'Meet my Coding Partner',
     completed: false,
     index: 1,
   },
   {
-    description: "Meet my friend Kiko Arora",
+    description: 'Meet my friend Kiko Arora',
     completed: false,
     index: 2,
   },
   {
-    description: "To be Present in Microverse Program during 8:00 to 17:15",
+    description: 'To be Present in Microverse Program during 8:00 to 17:15',
     completed: false,
     index: 3,
-  }
+  },
 ];
 
 const createTaskTemplate = (task) => {
@@ -35,12 +36,12 @@ const createTaskTemplate = (task) => {
   textArea.textContent = task.description;
 
   const check = document.createElement('input');
-  check.type='checkbox';
-  check.id=''; 
+  check.type = 'checkbox';
   check.name = 'check';
+  const i = '<i class=\'fa-solid fa-ellipsis-vertical\'></i>';
 
   const span = document.createElement('span');
-  span.textContent = 'Icon';
+  span.innerHTML = i;
 
   divTask.append(check, textArea, span);
 
@@ -51,10 +52,13 @@ const createTaskTemplate = (task) => {
 };
 
 const populate = (taskArray) => {
-  taskArray.forEach(element => {
+  const img = new Image();
+  img.src = enterImg;
+  document.querySelector('#enter').appendChild(img);
+
+  taskArray.forEach((element) => {
     document.querySelector('.list-container').append(createTaskTemplate(element));
   });
 };
 
-window.addEventListener('load',populate(taskArray));
-
+window.addEventListener('load', populate(taskArray));
