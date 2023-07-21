@@ -3,7 +3,7 @@
 
 <div align="center">
   
-  <h2><b> To Do list: list structure</b></h3>
+  <h1><b> To Do list: list structure</b></h1>
 
 </div>
 
