@@ -26,4 +26,4 @@ const createTaskTemplate = (task) => {
     return li;
   };
   
-  export default { createTaskTemplate };
+  export { createTaskTemplate };

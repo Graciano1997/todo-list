@@ -1,12 +1,30 @@
 import * as variable from './globalvar.js';
+import { createTaskTemplate } from './taskTemplate.js';
 import TasksToDo from "./tasksToDo.js"
 
 const taskController = new TasksToDo();
-taskController.taskArray = [];
+
+const removeAllChildren = (parentElement) => {
+  while (parentElement.firstChild) {
+    parentElement.removeChild(parentElement.firstChild);
+  }
+}
+
+const readTask = (tasks) => {
+  removeAllChildren(variable.tasksContainer);
+  tasks.forEach((element) => {
+    variable.tasksContainer.appendChild(createTaskTemplate(element));
+  });
+};
+
+const readTaskListener = () => {
+  window.addEventListener('load', readTask(taskController.taskArray));
+};
 
 const createTask = (task) => {
   taskController.taskArray.push(task);
   localStorage.setItem('taskDB', JSON.stringify(taskController.taskArray));
+  readTask(taskController.taskArray);
 };
 
 const createTaskListener = () => {
@@ -23,4 +41,4 @@ const createTaskListener = () => {
   })
 }
 
-export { createTaskListener };
+export { createTaskListener, readTaskListener };
