@@ -15,7 +15,8 @@
 
 .to-do-container{
   background: #fff;
-  padding: 0;
+  padding-left: 0.2%;
+  padding-right: 0.2%;
   margin: 0;
 }
 
@@ -38,6 +39,9 @@
   padding-bottom: 1%;
   padding-left: 1%;
   padding-right: 1%;
+}
+.task-item{
+  list-style-type: none;
 }
 
 #inputTask {
@@ -74,17 +78,25 @@
 }
 
 .task {
-  display: flex;
+  /* display: flex;
   align-items: center;
-  justify-content: space-between;
-  border-top: 1px solid rgba(168, 154, 154, 0.883);
+  justify-content: space-between; */
+  display: grid;
+  grid-template-rows: 100fr;
+  grid-template-columns:2fr 96fr 2fr;
+  border-top: 0.5px solid rgba(168, 154, 154, 0.883);
+  align-items: baseline;
+  column-gap: 5px;
 }
+
 .taskfield{
   width: 100%;
 }
 
 .fields {
-display: flex;
+/* display: flex; */
+display: grid;
+
 width:97%;
 gap: 1%;
 }
