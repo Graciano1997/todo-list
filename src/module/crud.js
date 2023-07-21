@@ -10,6 +10,20 @@ const removeAllChildren = (parentElement) => {
   }
 };
 
+const deleteTask = (index,value=null) => {
+  
+  if((value==='' || value===null) && (index>=0 && index!==null) ){
+  taskController.taskArray.splice(index, 1);
+  localStorage.setItem('taskDB', JSON.stringify(taskController.taskArray));
+}else{
+  taskController.taskArray.filter((el)=>{if(el.description===value){
+    taskController.taskArray.splice(taskController.taskArray.indexOf(el),1);
+    localStorage.setItem('taskDB', JSON.stringify(taskController.taskArray));
+  }});
+}
+readTask(taskController.taskArray);
+};
+
 const readTask = (tasks) => {
   removeAllChildren(variable.tasksContainer);
   tasks.forEach((element) => {
@@ -45,12 +59,15 @@ const createTaskListener = () => {
 }
 
 const updateTask = (index, newtaskContent) => {
-  const newTask = taskController.taskArray[index];
-  newTask['description'] = newtaskContent;
-  taskController.taskArray[index] = newTask;
+  if (newtaskContent.length === 0) {
+    deleteTask(index);
+  } else {
+    const newTask = taskController.taskArray[index];
+    newTask['description'] = newtaskContent;
+    taskController.taskArray[index] = newTask;
+  }
   localStorage.setItem('taskDB', JSON.stringify(taskController.taskArray));
 };
-
 
 const updateListener = () => {
   document.querySelectorAll('#taskContent').forEach((taskDescription, index) => {
@@ -60,18 +77,32 @@ const updateListener = () => {
       taskDescription.readOnly = false;
       taskDescription.classList.add('textEditing');
       taskDescription.parentElement.classList.add('textEditing');
-    });
-    taskDescription.addEventListener('blur', (el) => {
-      taskDescription.readOnly = true;
-      taskDescription.classList.remove('textEditing');
-      taskDescription.parentElement.classList.remove('textEditing');
+      taskDescription.nextSibling.classList.add('hide');
+      taskDescription.nextSibling.nextSibling.classList.remove('hide');
 
-      if (taskValue !== el.target.value) {
-        updateTask(index, el.target.value);
-        readTask(taskController.taskArray);
-      }
-    })
-  })
+      taskDescription.nextSibling.nextSibling.addEventListener('click', () => {
+        // console.log(taskDescription.textContent);
+        deleteTask(null,taskDescription.textContent);
+        taskDescription.parentNode.parentNode.remove();
+      });
+
+      taskDescription.addEventListener('dblclick', (el) => {
+        taskDescription.nextSibling.classList.remove('hide');
+        taskDescription.nextSibling.nextSibling.classList.add('hide');
+        taskDescription.readOnly = true;
+        taskDescription.classList.remove('textEditing');
+        taskDescription.parentElement.classList.remove('textEditing');
+
+        if (taskValue !== el.target.value) {
+          updateTask(index, el.target.value);
+          readTask(taskController.taskArray);
+        }
+      })
+    });
+  });
+
+
+
 }
 
 export { createTaskListener, readTaskListener, updateListener };

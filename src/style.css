@@ -79,6 +79,7 @@
   word-wrap: break-word;
   overflow: hidden;
   resize: none;
+  background: transparent;
 }
 
 .list-container {
@@ -130,4 +131,15 @@ i {
 
 .textEditing {
   background: rgba(249, 230, 123, 0.733);
+}
+.iconTask i {color: black;}
+
+#trash,
+#elipse
+{
+  cursor: pointer;
+}
+
+.hide {
+  display: none;
 }
