@@ -1,5 +1,6 @@
 import * as variable from './globalvar.js';
 import { createTaskTemplate } from './taskTemplate.js';
+import { updateTaskStatusListener, clearAllDoneTasksListener } from './interactiveList.js';
 import TasksToDo from './tasksToDo.js';
 
 const taskController = new TasksToDo();
@@ -15,17 +16,21 @@ const readTask = (tasks) => {
   tasks.forEach((element) => {
     variable.tasksContainer.appendChild(createTaskTemplate(element));
   });
+  clearAllDoneTasksListener();
+};
+
+const updateTaskIndex = (index) => {
+  taskController.taskArray.filter((task) => {
+    if (task.index > index) {
+      task.index -= 1;
+    }
+    return true;
+  });
 };
 
 const deleteTask = (index, value = null, taskIndex) => {
-  const updateTaskIndex = (index) => {
-    taskController.taskArray.filter((task) => {
-      if (task.index > index) {
-        task.index -= 1;
-      }
-      return true;
-    });
-  };
+
+
 
   if ((value === null) && (index !== null)) {
     taskController.taskArray.splice(index, 1);
@@ -43,6 +48,7 @@ const deleteTask = (index, value = null, taskIndex) => {
     });
   }
   readTask(taskController.taskArray);
+ 
 };
 
 const updateListener = () => {
@@ -113,8 +119,9 @@ const createTaskListener = () => {
     }
     variable.formTodo.reset();
     readTask(taskController.taskArray);
+    updateTaskStatusListener();
     updateListener();
   });
 };
 
-export { createTaskListener, readTaskListener, updateListener };
+export { createTaskListener, readTaskListener, updateListener, deleteTask, taskController, updateTaskIndex, readTask };

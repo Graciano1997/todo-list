@@ -10,12 +10,14 @@ const createTaskTemplate = (task) => {
   textArea.readOnly = true;
   textArea.maxLength = 250;
   textArea.spellcheck = false;
+  (task.completed === true) ? (textArea.classList.add('taskDone')) : ((textArea.classList.remove('taskDone')));
   textArea.autocomplete = false;
   textArea.textContent = task.description;
 
   const check = document.createElement('input');
   check.type = 'checkbox';
   check.name = 'check';
+  check.checked = (task.completed === true) ? (true) : (false);
   const elipseIcon = '<i class=\'fa-solid fa-ellipsis-vertical\' id=\'elipse\'></i>';
   const trashIcon = '<i class=\'fa-solid fa-trash\' id=\'trash\'></i>';
 
