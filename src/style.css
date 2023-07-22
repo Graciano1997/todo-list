@@ -135,7 +135,7 @@ i {
 .iconTask i {color: black;}
 
 #trash,
-#elipse
+#elipse,#refresh
 {
   cursor: pointer;
 }

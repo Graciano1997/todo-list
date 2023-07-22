@@ -3,7 +3,7 @@ import { createTaskTemplate } from './taskTemplate.js';
 import TasksToDo from "./tasksToDo.js"
 
 const taskController = new TasksToDo();
-let control=false;
+let control = false;
 
 const removeAllChildren = (parentElement) => {
   while (parentElement.firstChild) {
@@ -19,58 +19,22 @@ const updateTaskIndex = (index) => {
   })
 }
 
-const deleteTask = (index, value=null,taskIndex) => {
-  
+const deleteTask = (index, value = null, taskIndex) => {
+
   if ((value === null) && (index !== null)) {
-   
-    // for(let i=0; i<taskController.taskArray.length;i++){
-
-      // if (taskController.taskArray.indexOf(taskController.taskArray[i]) === index) {
-
-        
-        //  console.log('tarefa a apagar '+ taskToDeleteIndex);
-        //   updateTaskIndex(taskToDeleteIndex);
-        
-    
-          taskController.taskArray.splice(index, 1);
-          updateTaskIndex(taskIndex);
-            localStorage.setItem('taskDB', JSON.stringify(taskController.taskArray));
-          //console.log(index);
-          
-        
-        
-         
-      
-      
-    // }
-
-    // taskController.taskArray.forEach((el) => {
-    //   if (taskController.taskArray.indexOf(el) === index) {
-    //      const taskToDeleteIndex = el.index;
-    //     taskController.taskArray.splice(taskController.taskArray.indexOf(el), 1);
-    //     console.log(taskToDeleteIndex);
-    //      updateTaskIndex('tarefa a apagar' + taskToDeleteIndex);
-    //     localStorage.setItem('taskDB', JSON.stringify(taskController.taskArray));
-      
-    //   }
-    // });
-    
 
 
-    // if(taskController.taskArray[index]){
-    //   const taskToDeleteIndex = taskController.taskArray[index].index;
-    //   taskController.taskArray.splice(index, 1);
-    //   console.log('to delete' + taskToDeleteIndex);
-    //   updateTaskIndex(taskToDeleteIndex);
-    //   localStorage.setItem('taskDB', JSON.stringify(taskController.taskArray));  
-    // }
+    taskController.taskArray.splice(index, 1);
+    updateTaskIndex(taskIndex);
+    localStorage.setItem('taskDB', JSON.stringify(taskController.taskArray));
+
   } else {
     taskController.taskArray.filter((el) => {
       if (el.description === value) {
-         const taskToDeleteIndex = el.index;
+        const taskToDeleteIndex = el.index;
         taskController.taskArray.splice(taskController.taskArray.indexOf(el), 1);
-         updateTaskIndex(taskToDeleteIndex);
-         localStorage.setItem('taskDB', JSON.stringify(taskController.taskArray));
+        updateTaskIndex(taskToDeleteIndex);
+        localStorage.setItem('taskDB', JSON.stringify(taskController.taskArray));
       }
     });
   }
@@ -112,12 +76,10 @@ const createTaskListener = () => {
   })
 }
 
-const updateTask = (index, newtaskContent,taskIndex) => {
+const updateTask = (index, newtaskContent, taskIndex) => {
   if (newtaskContent.length === 0) {
-   // taskController.taskArray.splice(index, 1);
-    deleteTask(index,null,taskIndex);
+    deleteTask(index, null, taskIndex);
     console.log('executei');
-    // localStorage.setItem('taskDB', JSON.stringify(taskController.taskArray));
   } else {
     const newTask = taskController.taskArray[index];
     newTask['description'] = newtaskContent;
@@ -129,25 +91,26 @@ const updateTask = (index, newtaskContent,taskIndex) => {
 const updateListener = () => {
   document.querySelectorAll('#taskContent').forEach((taskDescription, index) => {
     const taskValue = taskDescription.textContent;
-    const taskIndex= taskController.taskArray[index].index;
+    const taskIndex = taskController.taskArray[index].index;
 
-    taskDescription.addEventListener('click', () => {
-      taskDescription.readOnly = false;
-      taskDescription.classList.add('textEditing');
-      taskDescription.parentElement.classList.add('textEditing');
-      taskDescription.nextSibling.classList.add('hide');
-      taskDescription.nextSibling.nextSibling.classList.remove('hide');
+    taskDescription.parentElement.addEventListener('click', () => {
+      taskDescription.addEventListener('click', () => {
+        taskDescription.readOnly = false;
+        taskDescription.parentElement.classList.add('textEditing');
+        taskDescription.nextSibling.classList.add('hide');
+        taskDescription.nextSibling.nextSibling.classList.remove('hide');
+      });
     });
 
-    taskDescription.addEventListener('blur', (el) => {
+    taskDescription.parentElement.addEventListener('dblclick', () => {
+
       taskDescription.nextSibling.classList.remove('hide');
       taskDescription.nextSibling.nextSibling.classList.add('hide');
       taskDescription.readOnly = true;
-      taskDescription.classList.remove('textEditing');
       taskDescription.parentElement.classList.remove('textEditing');
 
-      if (taskValue !== el.target.value) {
-        updateTask(index, el.target.value,taskIndex);
+      if (taskValue !== taskDescription.value) {
+        updateTask(index, taskDescription.value, taskIndex);
         readTask(taskController.taskArray);
       }
     });

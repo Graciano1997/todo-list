@@ -1,4 +1,4 @@
-import { add } from "lodash";
+import * as variable from './globalvar.js';
 
 const createTaskTemplate = (task) => {
     const divTask = document.createElement('div');
@@ -37,5 +37,11 @@ const createTaskTemplate = (task) => {
     li.append(divTask);
     return li;
   };
+
+  const refreshPage = () => {
+    variable.refresh.addEventListener('click',()=>{
+      window.location.reload();
+    })
+  }
   
-  export { createTaskTemplate };
+  export { createTaskTemplate, refreshPage };
