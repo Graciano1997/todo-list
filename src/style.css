@@ -132,11 +132,11 @@ i {
 .textEditing {
   background: rgba(249, 230, 123, 0.733);
 }
-.iconTask i {color: black;}
+.iconTask i { color: black; }
 
 #trash,
-#elipse,#refresh
-{
+#elipse,
+#refresh {
   cursor: pointer;
 }
 

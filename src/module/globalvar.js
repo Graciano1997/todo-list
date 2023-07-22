@@ -7,11 +7,11 @@ const textAreaContent = document.querySelector('#taskContent');
 const refresh = document.querySelector('#refresh');
 
 export {
-    btnClear,
-    btnSubmit,
-    fieldTask,
-    formTodo,
-    tasksContainer,
-    textAreaContent,
-    refresh,
-}
+  btnClear,
+  btnSubmit,
+  fieldTask,
+  formTodo,
+  tasksContainer,
+  textAreaContent,
+  refresh,
+};

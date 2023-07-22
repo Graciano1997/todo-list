@@ -3,7 +3,7 @@
 
 <div align="center">
   
-  <h1><b> To Do list: list structure</b></h1>
+  <h1><b> To Do list: CRUD operations</b></h1>
 
 </div>
 
@@ -33,7 +33,7 @@
 
 # 📖 To-Do-list <a name="about-project"></a>
 
-**To-Do-list** is a repository.The goal is to setup the to-do-list project using webpack.
+**To-Do-list** is a repository.The goal is to Create, Read,Update and Delete tasks.
 
 ## 🛠 Built With <a name="built-with"></a>
 
@@ -52,6 +52,7 @@
 ### Key Features <a name="key-features"></a>
 
 - **Demo of setup a front-end project using webpack**
+- **CRUD**
 - **Demo of Linters**
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
