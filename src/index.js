@@ -8,5 +8,5 @@ readTaskListener();
 updateListener();
 setSubmitIcon();
 refreshPage();
-clearAllDoneTasksListener()
+clearAllDoneTasksListener();
 updateTaskStatusListener();
