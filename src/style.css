@@ -1,0 +1,150 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap');
+
+* {
+  font-family: 'Open Sans', sans-serif;
+  font-size: 15px;
+}
+
+.container {
+  margin: 0;
+  padding-left: 10%;
+  padding-right: 10%;
+  display: flex;
+  flex-direction: column;
+  background: whitesmoke;
+}
+
+.to-do-container {
+  background: #fff;
+  padding-left: 0.2%;
+  padding-right: 0.2%;
+  margin: 0;
+}
+
+.header {
+  margin-top: 15%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #fff;
+  border-bottom: 1px solid rgba(168, 154, 154, 0.883);
+  padding-left: 1%;
+  padding-right: 2%;
+}
+
+.form-todo {
+  padding-top: 1.5%;
+  display: flex;
+  justify-content: space-between;
+  border-top: 1px solid rgba(168, 154, 154, 0.883);
+  padding-bottom: 1%;
+  padding-left: 1%;
+  padding-right: 2%;
+}
+
+#enter {
+  border: transparent;
+  background: #fff;
+  outline: none;
+}
+
+#check {
+  outline: none;
+}
+
+.task-item {
+  list-style-type: none;
+}
+
+#inputTask {
+  width: 95%;
+  outline: none;
+  border: transparent;
+}
+
+.divTaskContent {
+  width: 100%;
+}
+
+.taskCheck,
+#taskContent {
+  padding-top: 1.5%;
+  outline-style: none;
+  border-color: transparent;
+}
+
+#taskContent {
+  width: 100%;
+  line-height: 20px;
+  word-wrap: break-word;
+  overflow: hidden;
+  resize: none;
+  background: transparent;
+}
+
+.list-container {
+  display: flex;
+  flex-direction: column;
+  border-bottom: 1px solid rgba(168, 154, 154, 0.883);
+  padding-bottom: 1%;
+  padding-left: 1%;
+  padding-right: 1%;
+}
+
+.task {
+  display: grid;
+  grid-template-rows: 100fr;
+  grid-template-columns: 2fr 96fr 2fr;
+  border-top: 0.5px solid rgba(168, 154, 154, 0.883);
+  align-items: baseline;
+  column-gap: 5px;
+}
+
+.taskDone {
+  text-decoration: line-through;
+  font-style: italic;
+}
+
+.taskfield {
+  width: 100%;
+}
+
+.fields {
+  display: grid;
+  width: 97%;
+  gap: 1%;
+}
+
+.clear {
+  width: 100%;
+}
+
+.clear button {
+  padding: 1%;
+  width: 100%;
+  border: transparent;
+}
+
+.clear button:hover {
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+i {
+  color: #919499bc;
+}
+
+.textEditing {
+  background: rgba(249, 230, 123, 0.733);
+}
+.iconTask i { color: black; }
+
+#trash,
+#elipse,
+#refresh {
+  cursor: pointer;
+}
+
+.hide {
+  display: none;
+}
