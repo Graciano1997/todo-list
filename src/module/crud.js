@@ -126,4 +126,5 @@ export {
   taskController,
   updateTaskIndex,
   readTask,
+  createTask,
 };
