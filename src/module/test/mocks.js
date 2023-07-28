@@ -41,3 +41,16 @@ const clearAllMockDoneTasks = () => {
   localStorage.setItem('taskDB', JSON.stringify(taskController.taskArray));
   readMockTask(taskController.taskArray);
 };
+const updateTaskMock = (index, newtaskContent, taskIndex) => {
+  if (newtaskContent.length === 0) {
+    deleteTaskMock(index, null, taskIndex);
+  } else {
+    const newTask = taskController.taskArray[index];
+    newTask.description = newtaskContent;
+    taskController.taskArray[index] = newTask;
+    jest.spyOn(Storage.prototype, 'setItem');
+    Object.setPrototypeOf(localStorage.setItem, jest.fn());
+    localStorage.setItem('taskDB', JSON.stringify(taskController.taskArray));
+  }
+};
+export { readMockTask, deleteTaskMock, clearAllMockDoneTasks, updateTaskMock }
