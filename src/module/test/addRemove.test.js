@@ -35,9 +35,14 @@ const deleteTaskMock = (index, value = null, taskIndex) => {
   readMockTask(taskController.taskArray);
 };
 
-//start
+describe('Testing Add and remove funcionalities ', () => {
 
-//finish
+  beforeEach(() => {
+    taskController.taskArray = [];
+    jest.clearAllMocks();
+    localStorage.clear();
+  });
+  
     jest.spyOn(Storage.prototype, 'setItem');
     Object.setPrototypeOf(localStorage.setItem, jest.fn());
 
