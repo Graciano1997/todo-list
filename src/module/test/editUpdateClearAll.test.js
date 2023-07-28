@@ -79,5 +79,14 @@ const task1 = {
       completed: false,
       index: 4,
     };
-
+   createTask(task1);
+    createTask(task2);
+    createTask(task3);
+    createTask(task4);
+    Mocks.readMockTask(taskController.taskArray);
+    taskStatusUpdate(0);
+    taskStatusUpdate(3);
+    Mocks.clearAllMockDoneTasks();
+    expect(taskController.taskArray.length).toBe(2);
+    expect(taskController.taskArray[0].index).toBe(1);
 });
