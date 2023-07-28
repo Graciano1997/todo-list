@@ -10,3 +10,21 @@ const readMockTask = (tasks) => {
     document.querySelector('.list-container').append(li);
   });
 };
+const deleteTaskMock = (index, value = null, taskIndex) => {
+  if ((value === null) && (index !== null)) {
+    taskController.taskArray.splice(index, 1);
+    updateTaskIndex(taskIndex);
+    localStorage.setItem('taskDB', JSON.stringify(taskController.taskArray));
+  } else {
+    taskController.taskArray.filter((el) => {
+      if (el.description === value) {
+        const taskToDeleteIndex = el.index;
+        taskController.taskArray.splice(taskController.taskArray.indexOf(el), 1);
+        updateTaskIndex(taskToDeleteIndex);
+        localStorage.setItem('taskDB', JSON.stringify(taskController.taskArray));
+      }
+      return true;
+    });
+  }
+  readMockTask(taskController.taskArray);
+};
