@@ -52,6 +52,8 @@ describe('Testing updateContent,removeAll,changeStates funcionalities ', () => {
     expect(taskController.taskArray[0].index).toBe(3);
   });
   
-  //I need clean all my visited places
-
+test('I need clean all my visited places', () => {
+    document.body.innerHTML = '<div class="to-do-container">'
+      + '  <ul class="list-container"> </ul>'
+      + '</div>';
 });
