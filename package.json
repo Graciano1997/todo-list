@@ -7,7 +7,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "jest",
     "watch": "webpack --watch",
     "start": "webpack server --open",
     "build": "webpack",
@@ -18,8 +18,11 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "@babel/core": "^7.22.9",
     "@babel/plugin-transform-modules-commonjs": "^7.22.5",
+    "@babel/preset-env": "^7.22.9",
     "babel-eslint": "^10.1.0",
+    "babel-jest": "^29.6.2",
     "css-loader": "^6.8.1",
     "eslint": "^7.32.0",
     "eslint-config-airbnb-base": "^14.2.1",
@@ -27,7 +30,10 @@
     "gh-pages": "^5.0.0",
     "hint": "^7.1.10",
     "html-webpack-plugin": "^5.5.3",
+    "identity-obj-proxy": "^3.0.0",
     "jest": "^29.6.2",
+    "jest-environment-jsdom": "^29.6.2",
+    "jsdom": "^22.1.0",
     "style-loader": "^3.3.3",
     "stylelint": "^13.13.1",
     "stylelint-config-standard": "^21.0.0",
@@ -38,6 +44,7 @@
     "webpack-dev-server": "^4.15.1"
   },
   "dependencies": {
+    "jest-localstorage-mock": "^2.4.26",
     "lodash": "^4.17.21"
   }
 }

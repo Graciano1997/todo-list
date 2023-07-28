@@ -127,4 +127,5 @@ export {
   updateTaskIndex,
   readTask,
   createTask,
+  removeAllChildren
 };

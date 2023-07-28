@@ -1,5 +1,5 @@
 import * as variable from './globalvar.js';
-import enterImg from '../enter.png';
+// import enterImg from '../enter.png';
 
 const createTaskTemplate = (task) => {
   const divTask = document.createElement('div');
@@ -53,10 +53,10 @@ const refreshPage = () => {
   });
 };
 
-const setSubmitIcon = () => {
-  const img = new Image();
-  img.src = enterImg;
-  variable.btnSubmit.appendChild(img);
-};
+// const setSubmitIcon = () => {
+//   const img = new Image();
+//   img.src = enterImg;
+//   variable.btnSubmit.appendChild(img);
+// };
 
-export { createTaskTemplate, refreshPage, setSubmitIcon };
+export { createTaskTemplate, refreshPage };

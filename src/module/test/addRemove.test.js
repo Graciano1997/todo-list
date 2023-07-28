@@ -1,24 +1,117 @@
-import 'jest-localstorage-mock';
+/**
+ * @jest-environment jsdom
+ */
 
-import { createTask, deleteTask, taskController } from '../crud.js';
+import { createTask, taskController, updateTaskIndex, removeAllChildren } from '../crud.js';
 
-// Mock localStorage
-const localStorageMock = {
-  getItem: jest.fn(),
-  setItem: jest.fn(),
-  removeItem: jest.fn(),
-  clear: jest.fn(),
+const readMockTask = (tasks) => {
+  const listContainer = document.querySelector('.list-container');
+  removeAllChildren(listContainer);
+
+  tasks.forEach((element) => {
+    const li = document.createElement('li');
+    li.textContent = element.description;
+    li.index = element.index;
+    document.querySelector('.list-container').append(li);
+  });
+}
+
+const deleteTaskMock = (index, value = null, taskIndex) => {
+  if ((value === null) && (index !== null)) {
+    taskController.taskArray.splice(index, 1);
+    updateTaskIndex(taskIndex);
+    localStorage.setItem('taskDB', JSON.stringify(taskController.taskArray));
+  } else {
+    taskController.taskArray.filter((el) => {
+      if (el.description === value) {
+        const taskToDeleteIndex = el.index;
+        taskController.taskArray.splice(taskController.taskArray.indexOf(el), 1);
+        updateTaskIndex(taskToDeleteIndex);
+        localStorage.setItem('taskDB', JSON.stringify(taskController.taskArray));
+      }
+      return true;
+    });
+  }
+  readMockTask(taskController.taskArray);
 };
-global.localStorage = localStorageMock;
 
 
-const todoListContainerMock = document.createElement('div');
-const addBtnMock = document.createElement('button');
-const clearBtnMock = document.createElement('button');
-document.getElementById = jest.fn((id) => {
-  if (id === 'todoList') return todoListContainerMock;
-  if (id === 'addBtn') return addBtnMock;
-});
-document.querySelector = jest.fn((selector) => {
-  if (selector === '.clear-completed') return clearBtnMock;
+
+describe('Testing Add and remove funcionalities ', () => {
+
+  beforeEach(() => {
+    taskController.taskArray = [];
+    jest.clearAllMocks();
+    localStorage.clear();
+  });
+
+
+  test('Test Add new task-item to the list', () => {
+    document.body.innerHTML =
+      '<div class="to-do-container">' +
+      '  <ul class="list-container"> </ul>' +
+      '</div>';
+
+    const task = {
+      description: 'task1',
+      completed: false,
+      index: 1,
+    }
+
+    jest.spyOn(Storage.prototype, 'setItem');
+    Object.setPrototypeOf(localStorage.setItem, jest.fn());
+
+    createTask(task);
+    readMockTask(taskController.taskArray);
+    const list = document.querySelectorAll('.list-container > li');
+    expect(list).toHaveLength(1);
+    expect(localStorage.setItem).toHaveBeenCalledWith(
+      'taskDB', JSON.stringify(taskController.taskArray)
+    );
+    expect(localStorage.setItem).toHaveBeenCalledTimes(1);
+  });
+
+  test('remove a task from the list', () => {
+    document.body.innerHTML =
+      '<div class="to-do-container">' +
+      '  <ul class="list-container"> </ul>' +
+      '</div>';
+
+    const task = {
+      description: 'fighting with-jest',
+      completed: true,
+      index: 1,
+    }
+
+    const task1 = {
+      description: 'understanding-jest',
+      completed: false,
+      index: 2,
+    }
+
+    const task3 = {
+      description: 'Visit Microverse',
+      completed: false,
+      index: 3,
+    }
+
+    jest.spyOn(Storage.prototype, 'setItem');
+    Object.setPrototypeOf(localStorage.setItem, jest.fn());
+
+    createTask(task);
+    createTask(task1);
+    createTask(task3);
+
+    deleteTaskMock(null, taskController.taskArray[0].description);
+    readMockTask(taskController.taskArray);
+
+    const list = document.querySelectorAll('.list-container > li');
+    expect(list).toHaveLength(2);
+    expect(taskController.taskArray).toHaveLength(2);
+    expect(localStorage.setItem).toHaveBeenCalledWith(
+      'taskDB', JSON.stringify(taskController.taskArray)
+    );
+    expect(localStorage.setItem).toHaveBeenCalledTimes(4);
+    expect(taskController.taskArray[1].index).toBe(2);
+  })
 });
