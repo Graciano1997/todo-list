@@ -28,3 +28,16 @@ const deleteTaskMock = (index, value = null, taskIndex) => {
   }
   readMockTask(taskController.taskArray);
 };
+
+const clearAllMockDoneTasks = () => {
+  const completedTasks = taskController.taskArray.filter((task) => task.completed === true);
+  completedTasks.forEach((task) => {
+    taskController.taskArray.splice(taskController.taskArray.indexOf(task), 1);
+    updateTaskIndex(task.index);
+  });
+  jest.spyOn(Storage.prototype, 'setItem');
+  Object.setPrototypeOf(localStorage.setItem, jest.fn());
+
+  localStorage.setItem('taskDB', JSON.stringify(taskController.taskArray));
+  readMockTask(taskController.taskArray);
+};
