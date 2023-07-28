@@ -127,5 +127,5 @@ export {
   updateTaskIndex,
   readTask,
   createTask,
-  removeAllChildren
+  removeAllChildren,
 };

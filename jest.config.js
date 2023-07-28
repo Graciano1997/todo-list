@@ -1,4 +1,4 @@
-//module.exports = {
+// module.exports = {
 //   moduleNameMapper: {
 //     '\\.(css|less)$': 'identity-obj-proxy',
 //   },
@@ -29,6 +29,6 @@
 
 //   moduleNameMapper: {
 //     '\\.(css|less)$': '<rootDir>/__mocks__/styleMock.js',
-//     '\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4)$': '<rootDir>/__mocks__/fileMock.js',
+// '\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4)$': '<rootDir>/__mocks__/fileMock.js',
 //   },
 // };

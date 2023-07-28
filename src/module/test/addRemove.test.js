@@ -2,7 +2,9 @@
  * @jest-environment jsdom
  */
 
-import { createTask, taskController, updateTaskIndex, removeAllChildren } from '../crud.js';
+import {
+  createTask, taskController, updateTaskIndex, removeAllChildren,
+} from '../crud.js';
 
 const readMockTask = (tasks) => {
   const listContainer = document.querySelector('.list-container');
@@ -14,7 +16,7 @@ const readMockTask = (tasks) => {
     li.index = element.index;
     document.querySelector('.list-container').append(li);
   });
-}
+};
 
 const deleteTaskMock = (index, value = null, taskIndex) => {
   if ((value === null) && (index !== null)) {
@@ -36,7 +38,6 @@ const deleteTaskMock = (index, value = null, taskIndex) => {
 };
 
 describe('Testing Add and remove funcionalities ', () => {
-
   beforeEach(() => {
     taskController.taskArray = [];
     jest.clearAllMocks();
@@ -44,22 +45,21 @@ describe('Testing Add and remove funcionalities ', () => {
   });
 
   test('Test Add new task-item to the list', () => {
-    document.body.innerHTML =
-      '<div class="to-do-container">' +
-      '  <ul class="list-container"> </ul>' +
-      '</div>';
-      const task = {
-        description: 'task1',
-        completed: false,
-        index: 1,
-      }
-  
-      const task1 = {
-        description: 'task1',
-        completed: false,
-        index: 2,
-      }
-      jest.spyOn(Storage.prototype, 'setItem');
+    document.body.innerHTML = '<div class="to-do-container">'
+      + '  <ul class="list-container"> </ul>'
+      + '</div>';
+    const task = {
+      description: 'task1',
+      completed: false,
+      index: 1,
+    };
+
+    const task1 = {
+      description: 'task1',
+      completed: false,
+      index: 2,
+    };
+    jest.spyOn(Storage.prototype, 'setItem');
     Object.setPrototypeOf(localStorage.setItem, jest.fn());
 
     createTask(task);
@@ -68,33 +68,32 @@ describe('Testing Add and remove funcionalities ', () => {
     const list = document.querySelectorAll('.list-container > li');
     expect(list).toHaveLength(2);
     expect(localStorage.setItem).toHaveBeenCalledWith(
-      'taskDB', JSON.stringify(taskController.taskArray)
+      'taskDB', JSON.stringify(taskController.taskArray),
     );
     expect(localStorage.setItem).toHaveBeenCalledTimes(2);
   });
   test('remove a task from the list', () => {
-    document.body.innerHTML =
-      '<div class="to-do-container">' +
-      '  <ul class="list-container"> </ul>' +
-      '</div>';
+    document.body.innerHTML = '<div class="to-do-container">'
+      + '  <ul class="list-container"> </ul>'
+      + '</div>';
 
     const task = {
       description: 'fighting with-jest',
       completed: true,
       index: 1,
-    }
+    };
 
     const task1 = {
       description: 'understanding-jest',
       completed: false,
       index: 2,
-    }
+    };
 
     const task3 = {
       description: 'Visit Microverse',
       completed: false,
       index: 3,
-    }
+    };
 
     jest.spyOn(Storage.prototype, 'setItem');
     Object.setPrototypeOf(localStorage.setItem, jest.fn());
@@ -110,9 +109,9 @@ describe('Testing Add and remove funcionalities ', () => {
     expect(list).toHaveLength(2);
     expect(taskController.taskArray).toHaveLength(2);
     expect(localStorage.setItem).toHaveBeenCalledWith(
-      'taskDB', JSON.stringify(taskController.taskArray)
+      'taskDB', JSON.stringify(taskController.taskArray),
     );
     expect(localStorage.setItem).toHaveBeenCalledTimes(4);
     expect(taskController.taskArray[1].index).toBe(2);
-  })
+  });
 });
