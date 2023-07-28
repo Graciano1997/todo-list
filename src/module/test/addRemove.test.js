@@ -59,6 +59,20 @@ describe('Testing Add and remove funcionalities ', () => {
         completed: false,
         index: 2,
       }
+      jest.spyOn(Storage.prototype, 'setItem');
+    Object.setPrototypeOf(localStorage.setItem, jest.fn());
+
+    createTask(task);
+    createTask(task1);
+    readMockTask(taskController.taskArray);
+    const list = document.querySelectorAll('.list-container > li');
+    expect(list).toHaveLength(2);
+    expect(localStorage.setItem).toHaveBeenCalledWith(
+      'taskDB', JSON.stringify(taskController.taskArray)
+    );
+    expect(localStorage.setItem).toHaveBeenCalledTimes(2);
+  });
+
 
     jest.spyOn(Storage.prototype, 'setItem');
     Object.setPrototypeOf(localStorage.setItem, jest.fn());
