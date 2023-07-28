@@ -3,7 +3,7 @@
 
 <div align="center">
   
-  <h1><b> To Do list: Testing with JEST</b></h1>
+  <h1><b> To Do list: Testing with JEST -- Part 2</b></h1>
 
 </div>
 
@@ -34,7 +34,7 @@
 
 # 📖 To-Do-list <a name="about-project"></a>
 
-**To-Do-list** is a repository.The goal is to Create, interactive list funcionality.
+**To-Do-list** is a repository.The goal is to Create, interactive list funcionality, and we use JEST to test.
 
 ## 🛠 Built With <a name="built-with"></a>
 

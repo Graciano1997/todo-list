@@ -2,7 +2,9 @@
  * @jest-environment jsdom
  */
 
-import {createTask, taskController, updateTaskIndex, removeAllChildren,} from '../crud.js';
+import {
+  createTask, taskController,
+} from '../crud.js';
 import * as Mocks from './mocks.js';
 
 describe('Testing Add and remove funcionalities ', () => {

@@ -53,4 +53,6 @@ const updateTaskMock = (index, newtaskContent, taskIndex) => {
     localStorage.setItem('taskDB', JSON.stringify(taskController.taskArray));
   }
 };
-export { readMockTask, deleteTaskMock, clearAllMockDoneTasks, updateTaskMock }
+export {
+  readMockTask, deleteTaskMock, clearAllMockDoneTasks, updateTaskMock,
+};

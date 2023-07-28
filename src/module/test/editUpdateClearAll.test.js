@@ -2,7 +2,9 @@
  * @jest-environment jsdom
  */
 
-import { createTask, taskController, updateTaskIndex, removeAllChildren } from '../crud.js';
+import {
+  createTask, taskController,
+} from '../crud.js';
 import { taskStatusUpdate } from '../interactiveList.js';
 import * as Mocks from './mocks.js';
 
@@ -51,12 +53,12 @@ describe('Testing updateContent,removeAll,changeStates funcionalities ', () => {
     expect(taskController.taskArray[0].description).toMatch('Visit Microverse');
     expect(taskController.taskArray[0].index).toBe(3);
   });
-  
-test('I need clean all my visited places', () => {
+
+  test('I need clean all my visited places', () => {
     document.body.innerHTML = '<div class="to-do-container">'
       + '  <ul class="list-container"> </ul>'
       + '</div>';
-const task1 = {
+    const task1 = {
       description: 'Visit Microverse',
       completed: false,
       index: 1,
@@ -79,7 +81,7 @@ const task1 = {
       completed: false,
       index: 4,
     };
-   createTask(task1);
+    createTask(task1);
     createTask(task2);
     createTask(task3);
     createTask(task4);
@@ -89,4 +91,5 @@ const task1 = {
     Mocks.clearAllMockDoneTasks();
     expect(taskController.taskArray.length).toBe(2);
     expect(taskController.taskArray[0].index).toBe(1);
+  });
 });

@@ -39,4 +39,6 @@ const clearAllDoneTasksListener = () => {
   variable.btnClear.addEventListener('click', clearAllDoneTasks);
 };
 
-export { updateTaskStatusListener, clearAllDoneTasksListener, clearAllDoneTasks, taskStatusUpdate };
+export {
+  updateTaskStatusListener, clearAllDoneTasksListener, clearAllDoneTasks, taskStatusUpdate,
+};
