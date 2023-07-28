@@ -72,7 +72,29 @@ describe('Testing Add and remove funcionalities ', () => {
     );
     expect(localStorage.setItem).toHaveBeenCalledTimes(2);
   });
+  test('remove a task from the list', () => {
+    document.body.innerHTML =
+      '<div class="to-do-container">' +
+      '  <ul class="list-container"> </ul>' +
+      '</div>';
 
+    const task = {
+      description: 'fighting with-jest',
+      completed: true,
+      index: 1,
+    }
+
+    const task1 = {
+      description: 'understanding-jest',
+      completed: false,
+      index: 2,
+    }
+
+    const task3 = {
+      description: 'Visit Microverse',
+      completed: false,
+      index: 3,
+    }
 
     jest.spyOn(Storage.prototype, 'setItem');
     Object.setPrototypeOf(localStorage.setItem, jest.fn());
