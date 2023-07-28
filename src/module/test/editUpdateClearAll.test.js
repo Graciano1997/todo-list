@@ -56,4 +56,28 @@ test('I need clean all my visited places', () => {
     document.body.innerHTML = '<div class="to-do-container">'
       + '  <ul class="list-container"> </ul>'
       + '</div>';
+const task1 = {
+      description: 'Visit Microverse',
+      completed: false,
+      index: 1,
+    };
+
+    const task2 = {
+      description: 'Visit India',
+      completed: false,
+      index: 2,
+    };
+
+    const task3 = {
+      description: 'Visit EUA',
+      completed: false,
+      index: 3,
+    };
+
+    const task4 = {
+      description: 'Visit Caiman Island',
+      completed: false,
+      index: 4,
+    };
+
 });
