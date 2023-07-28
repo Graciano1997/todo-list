@@ -48,7 +48,18 @@ describe('Testing Add and remove funcionalities ', () => {
       '<div class="to-do-container">' +
       '  <ul class="list-container"> </ul>' +
       '</div>';
-      
+      const task = {
+        description: 'task1',
+        completed: false,
+        index: 1,
+      }
+  
+      const task1 = {
+        description: 'task1',
+        completed: false,
+        index: 2,
+      }
+
     jest.spyOn(Storage.prototype, 'setItem');
     Object.setPrototypeOf(localStorage.setItem, jest.fn());
 
