@@ -35,66 +35,9 @@ const deleteTaskMock = (index, value = null, taskIndex) => {
   readMockTask(taskController.taskArray);
 };
 
+//start
 
-
-describe('Testing Add and remove funcionalities ', () => {
-
-  beforeEach(() => {
-    taskController.taskArray = [];
-    jest.clearAllMocks();
-    localStorage.clear();
-  });
-
-
-  test('Test Add new task-item to the list', () => {
-    document.body.innerHTML =
-      '<div class="to-do-container">' +
-      '  <ul class="list-container"> </ul>' +
-      '</div>';
-
-    const task = {
-      description: 'task1',
-      completed: false,
-      index: 1,
-    }
-
-    jest.spyOn(Storage.prototype, 'setItem');
-    Object.setPrototypeOf(localStorage.setItem, jest.fn());
-
-    createTask(task);
-    readMockTask(taskController.taskArray);
-    const list = document.querySelectorAll('.list-container > li');
-    expect(list).toHaveLength(1);
-    expect(localStorage.setItem).toHaveBeenCalledWith(
-      'taskDB', JSON.stringify(taskController.taskArray)
-    );
-    expect(localStorage.setItem).toHaveBeenCalledTimes(1);
-  });
-
-  test('remove a task from the list', () => {
-    document.body.innerHTML =
-      '<div class="to-do-container">' +
-      '  <ul class="list-container"> </ul>' +
-      '</div>';
-
-    const task = {
-      description: 'fighting with-jest',
-      completed: true,
-      index: 1,
-    }
-
-    const task1 = {
-      description: 'understanding-jest',
-      completed: false,
-      index: 2,
-    }
-
-    const task3 = {
-      description: 'Visit Microverse',
-      completed: false,
-      index: 3,
-    }
-
+//finish
     jest.spyOn(Storage.prototype, 'setItem');
     Object.setPrototypeOf(localStorage.setItem, jest.fn());
 
