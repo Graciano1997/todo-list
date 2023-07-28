@@ -3,7 +3,7 @@
 
 <div align="center">
   
-  <h1><b> To Do list: interactive lists</b></h1>
+  <h1><b> To Do list: Testing with JEST</b></h1>
 
 </div>
 
@@ -16,6 +16,7 @@
   - [🛠 Built With ](#-built-with-)
     - [Tech Stack ](#tech-stack-)
     - [Key Features ](#key-features-)
+    - [🚀 Live Demo ](#-live-demo-)
   - [💻 Getting Started ](#-getting-started-)
     - [Prerequisites](#prerequisites)
     - [Setup](#setup)
@@ -54,6 +55,13 @@
 - **Demo of setup a front-end project using webpack**
 - **CRUD**
 - **Demo of Linters**
+- **Testing with Jest**
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+## 🚀 Live Demo <a name="live-demo"></a>
+
+- [Live Demo Link](https://graciano1997.github.io/todo-list/dist/)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 <!-- GETTING STARTED -->
@@ -125,12 +133,16 @@ npm run build
 
 <!-- AUTHOR -->
 
-## 👥 Author <a name="author"></a>
+## 👥 Authors <a name="author"></a>
+
 
 👤 Graciano Henrique
 
 - GitHub: [@Graciano1997](https://github.com/Graciano1997)
 
+👤 Faiz Mohammad
+
+- GitHub: [@the-faizMohamm](https://github.com/the-faizMohamm)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -138,8 +150,8 @@ npm run build
 
 ## 🔭 Future Features <a name="future-features"></a>
 
-- [ ] **Add tasks**
-- [ ] **Remove tasks**
+- [ ] **Using css theme**
+
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
