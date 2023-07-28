@@ -2,40 +2,8 @@
  * @jest-environment jsdom
  */
 
-import {
-  createTask, taskController, updateTaskIndex, removeAllChildren,
-} from '../crud.js';
-
-const readMockTask = (tasks) => {
-  const listContainer = document.querySelector('.list-container');
-  removeAllChildren(listContainer);
-
-  tasks.forEach((element) => {
-    const li = document.createElement('li');
-    li.textContent = element.description;
-    li.index = element.index;
-    document.querySelector('.list-container').append(li);
-  });
-};
-
-const deleteTaskMock = (index, value = null, taskIndex) => {
-  if ((value === null) && (index !== null)) {
-    taskController.taskArray.splice(index, 1);
-    updateTaskIndex(taskIndex);
-    localStorage.setItem('taskDB', JSON.stringify(taskController.taskArray));
-  } else {
-    taskController.taskArray.filter((el) => {
-      if (el.description === value) {
-        const taskToDeleteIndex = el.index;
-        taskController.taskArray.splice(taskController.taskArray.indexOf(el), 1);
-        updateTaskIndex(taskToDeleteIndex);
-        localStorage.setItem('taskDB', JSON.stringify(taskController.taskArray));
-      }
-      return true;
-    });
-  }
-  readMockTask(taskController.taskArray);
-};
+import {createTask, taskController, updateTaskIndex, removeAllChildren,} from '../crud.js';
+import * as Mocks from './mocks.js';
 
 describe('Testing Add and remove funcionalities ', () => {
   beforeEach(() => {
@@ -64,7 +32,7 @@ describe('Testing Add and remove funcionalities ', () => {
 
     createTask(task);
     createTask(task1);
-    readMockTask(taskController.taskArray);
+    Mocks.readMockTask(taskController.taskArray);
     const list = document.querySelectorAll('.list-container > li');
     expect(list).toHaveLength(2);
     expect(localStorage.setItem).toHaveBeenCalledWith(
@@ -102,8 +70,8 @@ describe('Testing Add and remove funcionalities ', () => {
     createTask(task1);
     createTask(task3);
 
-    deleteTaskMock(null, taskController.taskArray[0].description);
-    readMockTask(taskController.taskArray);
+    Mocks.deleteTaskMock(null, taskController.taskArray[0].description);
+    Mocks.readMockTask(taskController.taskArray);
 
     const list = document.querySelectorAll('.list-container > li');
     expect(list).toHaveLength(2);
