@@ -42,7 +42,13 @@ describe('Testing Add and remove funcionalities ', () => {
     jest.clearAllMocks();
     localStorage.clear();
   });
-  
+
+  test('Test Add new task-item to the list', () => {
+    document.body.innerHTML =
+      '<div class="to-do-container">' +
+      '  <ul class="list-container"> </ul>' +
+      '</div>';
+      
     jest.spyOn(Storage.prototype, 'setItem');
     Object.setPrototypeOf(localStorage.setItem, jest.fn());
 
