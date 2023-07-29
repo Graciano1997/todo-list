@@ -45,18 +45,18 @@ const deleteTask = (index, value = null, taskIndex) => {
   readTask(taskController.taskArray);
 };
 
-const updateListener = () => {
-  const updateTask = (index, newtaskContent, taskIndex) => {
-    if (newtaskContent.length === 0) {
-      deleteTask(index, null, taskIndex);
-    } else {
-      const newTask = taskController.taskArray[index];
-      newTask.description = newtaskContent;
-      taskController.taskArray[index] = newTask;
-      localStorage.setItem('taskDB', JSON.stringify(taskController.taskArray));
-    }
-  };
+const updateTask = (index, newtaskContent, taskIndex) => {
+  if (newtaskContent.length === 0) {
+    deleteTask(index, null, taskIndex);
+  } else {
+    const newTask = taskController.taskArray[index];
+    newTask.description = newtaskContent;
+    taskController.taskArray[index] = newTask;
+    localStorage.setItem('taskDB', JSON.stringify(taskController.taskArray));
+  }
+};
 
+const updateListener = () => {
   document.querySelectorAll('#taskContent').forEach((taskDescription, index) => {
     const taskValue = taskDescription.textContent;
     const taskIndex = taskController.taskArray[index].index;
@@ -78,7 +78,6 @@ const updateListener = () => {
       if (taskValue !== taskDescription.value) {
         updateTask(index, taskDescription.value, taskIndex);
         readTask(taskController.taskArray);
-        updateListener();
       }
     });
 
@@ -126,4 +125,6 @@ export {
   taskController,
   updateTaskIndex,
   readTask,
+  createTask,
+  removeAllChildren,
 };
